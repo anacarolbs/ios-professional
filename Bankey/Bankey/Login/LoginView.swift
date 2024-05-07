@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class OverdueNewWarningView: UIView {
+class LoginView: UIView {
     
     let stackView = UIStackView()
     let usernameTextField = UITextField()
@@ -62,9 +62,9 @@ extension LoginView {
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1))
-            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1)
-            trailingAnchor.constraint(equalToSystemSpacingAfter: usernameTextField.trailingAnchor, multiplier: 1)
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: usernameTextField.trailingAnchor, multiplier: 1),
             bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1)
         ])
         
@@ -72,7 +72,7 @@ extension LoginView {
     }
     
 }
-    
+
 // MARK: - UITextFieldDelegate
 extension LoginView: UITextFieldDelegate {
     
@@ -84,7 +84,6 @@ extension LoginView: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
-        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
