@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let loginViewController = LoginViewController()
-    let onboardingContainerViewController = OnboardingViewController()
+    let onboardingContainerViewController = OnboardingViewController(heroImageName: " ", titleText: " ")
     let dummyViewController = DummyViewController()
     let mainViewController = MainViewController()
     
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [nc1, nc2, nc3]
 
        
-        window?.rootViewController = mainViewController
+//        window?.rootViewController = mainViewController
 //        window?.rootViewController = UITabBarController()
 //        tabBarController.viewControllers = [nc1, nc2, nc3]
         
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = onboardingContainerViewController
 //        window?.rootViewController = loginViewController
 //        window?.rootViewController = loginViewController()
-//        window?.rootViewController = AccountSumaryViewController()
+        window?.rootViewController = AccountSummaryViewController()
 //        window?.rootViewController = OnboardingContainerViewController()
 //        window?.rootViewController = OnboardingViewController(heroImageName: "delorean", titleText: "Bankey is faster, easier to use and has a brand new look and feel that will make you feel like you are back in the 80s.")
         
