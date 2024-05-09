@@ -7,14 +7,16 @@
 
 import UIKit
 
+let appColor: UIColor = .systemTeal
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
     let loginViewController = LoginViewController()
     let onboardingContainerViewController = OnboardingViewController()
     let dummyViewController = DummyViewController()
+    let mainViewController = MainViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -22,17 +24,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
         
-        loginViewController.delegate = self
-        onboardingContainerViewController.delegate = self
-        dummyViewController.logoutDelegate = self
+        let vc1 = SearchViewController()
+        let vc2 = ContactsViewController()
+        let vc3 = FavoritesViewController()
+        
+        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        vc3.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        
+        let nc1 = UINavigationController(rootViewController: vc1)
+        let nc2 = UINavigationController(rootViewController: vc2)
+        let nc3 = UINavigationController(rootViewController: vc3)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nc1, nc2, nc3]
+
+       
+        window?.rootViewController = mainViewController
+//        window?.rootViewController = UITabBarController()
+//        tabBarController.viewControllers = [nc1, nc2, nc3]
+        
+//        loginViewController.delegate = self
+//        onboardingContainerViewController.delegate = self
+//        dummyViewController.logoutDelegate = self
         
 //        window?.rootViewController = onboardingContainerViewController
-        window?.rootViewController = loginViewController
+//        window?.rootViewController = loginViewController
 //        window?.rootViewController = loginViewController()
 //        window?.rootViewController = AccountSumaryViewController()
 //        window?.rootViewController = OnboardingContainerViewController()
 //        window?.rootViewController = OnboardingViewController(heroImageName: "delorean", titleText: "Bankey is faster, easier to use and has a brand new look and feel that will make you feel like you are back in the 80s.")
         
+        mainViewController.selectedIndex = 2
         return true
     }
 }
@@ -65,7 +88,7 @@ extension AppDelegate: LoginViewControllerDelegate {
     }
 }
  
-extension AppDelegate: OnboardingContainerViewControllerDelegate {
+/* extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
         setRootViewController(dummyViewController)
@@ -78,7 +101,22 @@ extension AppDelegate: LogoutDelegate {
     }
 }
     
+*/
 
+class SearchViewController: UIViewController {
+    override func viewDidLoad() {
+        title = "Search"
+    }
+}
 
+class ContactsViewController: UIViewController {
+    override func viewDidLoad() {
+        title = "Contacts"
+    }
+}
 
-
+class FavoritesViewController: UIViewController {
+    override func viewDidLoad() {
+        title = "Favorites"
+    }
+}
