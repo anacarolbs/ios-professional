@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let loginViewController = LoginViewController()
     let onboardingContainerViewController = OnboardingViewController(heroImageName: " ", titleText: " ")
-    let dummyViewController = DummyViewController()
+//    let dummyViewController = DummyViewController()
     let mainViewController = MainViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -23,6 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
+        
+        loginViewController.delegate = self
+//        onboardingContainerViewController.delegate = self
+//        dummyViewController.logoutDelegate = self
+        
+        let vc = mainViewController
+        vc.setStatusBar()
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+        
+        window?.rootViewController = vc
+        
+        return true
         
         let vc1 = SearchViewController()
         let vc2 = ContactsViewController()
@@ -43,20 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = mainViewController
 //        window?.rootViewController = UITabBarController()
 //        tabBarController.viewControllers = [nc1, nc2, nc3]
-        
-//        loginViewController.delegate = self
-//        onboardingContainerViewController.delegate = self
-//        dummyViewController.logoutDelegate = self
+
         
 //        window?.rootViewController = onboardingContainerViewController
 //        window?.rootViewController = loginViewController
 //        window?.rootViewController = loginViewController()
-        window?.rootViewController = AccountSummaryViewController()
+//        window?.rootViewController = AccountSummaryViewController()
 //        window?.rootViewController = OnboardingContainerViewController()
 //        window?.rootViewController = OnboardingViewController(heroImageName: "delorean", titleText: "Bankey is faster, easier to use and has a brand new look and feel that will make you feel like you are back in the 80s.")
         
-        mainViewController.selectedIndex = 2
-        return true
+//        mainViewController.selectedIndex = 2
+//        return true
     }
 }
 
@@ -81,17 +92,17 @@ extension AppDelegate {
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
         if LocalState.hasOnboarded {
-            setRootViewController(dummyViewController)
+            setRootViewController(mainViewController)
         } else {
             setRootViewController(onboardingContainerViewController)
         }
     }
 }
  
-/* extension AppDelegate: OnboardingContainerViewControllerDelegate {
+ extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
-        setRootViewController(dummyViewController)
+        setRootViewController(mainViewController)
     }
 }
 
@@ -101,7 +112,7 @@ extension AppDelegate: LogoutDelegate {
     }
 }
     
-*/
+
 
 class SearchViewController: UIViewController {
     override func viewDidLoad() {

@@ -20,6 +20,7 @@ struct CurrencyFormatter {
         
         let dollars = convertDollar(tuple.0)
         let cents = convertCents(tuple.1)
+//        formatter.locale = Locale(identifier: "en_US")
         
         return (dollars, cents)
     }
