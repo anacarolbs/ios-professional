@@ -20,7 +20,6 @@ struct CurrencyFormatter {
         
         let dollars = convertDollar(tuple.0)
         let cents = convertCents(tuple.1)
-//        formatter.locale = Locale(identifier: "en_US")
         
         return (dollars, cents)
     }
@@ -29,6 +28,7 @@ struct CurrencyFormatter {
     private func convertDollar(_ dollarPart: Double) -> String {
         let dollarsWithDecimal = dollarsFormatted(dollarPart) // "$929,466.00"
         let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         let decimalSeparator = formatter.decimalSeparator! // "."
         let dollarComponents = dollarsWithDecimal.components(separatedBy: decimalSeparator) // "$929,466" "00"
         var dollars = dollarComponents.first! // "$929,466"

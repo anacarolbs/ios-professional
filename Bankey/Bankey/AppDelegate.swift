@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let loginViewController = LoginViewController()
-    let onboardingContainerViewController = OnboardingViewController(heroImageName: " ", titleText: " ")
+    let onboardingViewController = OnboardingViewController(heroImageName: " ", titleText: " ")
 //    let dummyViewController = DummyViewController()
     let mainViewController = MainViewController()
     
@@ -25,7 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         
         loginViewController.delegate = self
-        onboardingContainerViewController.delegate = self
+        onboardingViewController.delegate = self
+        
+        registerForNotifications()
+        
 //        dummyViewController.logoutDelegate = self
         
 //        let vc = mainViewController
@@ -71,6 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         displayLogin()
         return true
     }
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
+    }
+    
     private func displayLogin() {
         setRootViewController(loginViewController)
     }
@@ -130,7 +138,7 @@ extension AppDelegate: LoginViewControllerDelegate {
 }
 
 extension AppDelegate: LogoutDelegate {
-    func didLogout() {
+    @objc func didLogout() {
         setRootViewController(loginViewController)
     }
 }

@@ -12,7 +12,7 @@ class OnboardingViewController: UIViewController {
     let stackView = UIStackView()
     let imageView = UIImageView()
     let label = UILabel()
-    
+   
     let heroImageName: String
     let titleText: String
     
