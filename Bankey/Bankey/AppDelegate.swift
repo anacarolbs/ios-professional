@@ -25,33 +25,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         
         loginViewController.delegate = self
-//        onboardingContainerViewController.delegate = self
+        onboardingContainerViewController.delegate = self
 //        dummyViewController.logoutDelegate = self
         
-        let vc = mainViewController
-        vc.setStatusBar()
-        
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().backgroundColor = appColor
-        
-        window?.rootViewController = vc
-        
-        return true
-        
-        let vc1 = SearchViewController()
-        let vc2 = ContactsViewController()
-        let vc3 = FavoritesViewController()
-        
-        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
-        vc3.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
-        
-        let nc1 = UINavigationController(rootViewController: vc1)
-        let nc2 = UINavigationController(rootViewController: vc2)
-        let nc3 = UINavigationController(rootViewController: vc3)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nc1, nc2, nc3]
+//        let vc = mainViewController
+//        vc.setStatusBar()
+//        
+//        UINavigationBar.appearance().isTranslucent = false
+//        UINavigationBar.appearance().backgroundColor = appColor
+//        
+//        window?.rootViewController = vc
+//        
+//        return true
+//        
+//        let vc1 = SearchViewController()
+//        let vc2 = ContactsViewController()
+//        let vc3 = FavoritesViewController()
+//        
+//        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+//        vc3.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+//        
+//        let nc1 = UINavigationController(rootViewController: vc1)
+//        let nc2 = UINavigationController(rootViewController: vc2)
+//        let nc3 = UINavigationController(rootViewController: vc3)
+//        
+//        let tabBarController = UITabBarController()
+//        tabBarController.viewControllers = [nc1, nc2, nc3]
 
        
 //        window?.rootViewController = mainViewController
@@ -68,6 +68,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        mainViewController.selectedIndex = 2
 //        return true
+        displayLogin()
+        return true
+    }
+    private func displayLogin() {
+        setRootViewController(loginViewController)
+    }
+    
+    private func displayNextScreen() {
+        if LocalState.hasOnboarded {
+            prepMainView()
+            setRootViewController(mainViewController)
+        } else {
+            setRootViewController(onboardingViewController)
+        }
+    }
+    
+    private func prepMainView() {
+        mainViewController.setStatusBar()
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+
     }
 }
 
@@ -91,17 +112,19 @@ extension AppDelegate {
 
 extension AppDelegate: LoginViewControllerDelegate {
     func didLogin() {
-        if LocalState.hasOnboarded {
-            setRootViewController(mainViewController)
-        } else {
-            setRootViewController(onboardingContainerViewController)
-        }
+        displayNextScreen()
+//        if LocalState.hasOnboarded {
+//            setRootViewController(mainViewController)
+//        } else {
+//            setRootViewController(onboardingContainerViewController)
+//        }
     }
 }
  
  extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
+        prepMainView()
         setRootViewController(mainViewController)
     }
 }
