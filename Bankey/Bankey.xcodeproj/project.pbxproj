@@ -28,6 +28,7 @@
 		8E11BD262BEE969900CE26C1 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11BD252BEE969900CE26C1 /* CurrencyFormatterTests.swift */; };
 		8E11BD282BEEC05600CE26C1 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11BD272BEEC05600CE26C1 /* NSNotificationName.swift */; };
 		8E11BD2A2BEEC4B300CE26C1 /* UITextField+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11BD292BEEC4B300CE26C1 /* UITextField+SecureToggle.swift */; };
+		8E11BD2D2BEFDD5400CE26C1 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11BD2C2BEFDD5400CE26C1 /* ShakeyBellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		8E11BD252BEE969900CE26C1 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		8E11BD272BEEC05600CE26C1 /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		8E11BD292BEEC4B300CE26C1 /* UITextField+SecureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SecureToggle.swift"; sourceTree = "<group>"; };
+		8E11BD2C2BEFDD5400CE26C1 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				8E11BCFB2BEA9D3400CE26C1 /* Onboarding */,
 				8E11BD092BED626200CE26C1 /* AccountSummary */,
 				8E11BD022BED1FED00CE26C1 /* Utils */,
+				8E11BD2B2BEFDD1600CE26C1 /* Components */,
 				8E11BCF52BE94EEA00CE26C1 /* Files */,
 			);
 			path = Bankey;
@@ -193,6 +196,14 @@
 				8E11BD252BEE969900CE26C1 /* CurrencyFormatterTests.swift */,
 			);
 			path = BankeyUnitTests;
+			sourceTree = "<group>";
+		};
+		8E11BD2B2BEFDD1600CE26C1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8E11BD2C2BEFDD5400CE26C1 /* ShakeyBellView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +310,7 @@
 			files = (
 				8E11BD0D2BED65C800CE26C1 /* AccountSummaryHeaderView.swift in Sources */,
 				8E11BD132BEDC72B00CE26C1 /* AccountSummaryCell.swift in Sources */,
+				8E11BD2D2BEFDD5400CE26C1 /* ShakeyBellView.swift in Sources */,
 				8E11BD012BED06C900CE26C1 /* DummyViewController.swift in Sources */,
 				8E11BCF82BE94FAE00CE26C1 /* LoginView.swift in Sources */,
 				8E11BD172BEE8BB000CE26C1 /* CurrencyFormatter.swift in Sources */,

@@ -175,7 +175,7 @@ extension LoginViewController {
 //            return
 //        }
         
-        if username == "Flynn" && password == "Welcome" {
+        if username == "" && password == "" {
             signInButton.configuration?.showsActivityIndicator = true
             delegate?.didLogin()
         } else {
@@ -217,12 +217,11 @@ extension LoginViewController {
         self.view.layoutIfNeeded()
         }
         animator2.startAnimation(afterDelay: 0.2)
-    }
     
     let animator3 = UIViewPropertyAnimator(duration: duration*2, curve: .easeInOut) {
         self.titleLabel.alpha = 1
         self.view.layoutIfNeeded()
         }
-    animator3.startAnimation(afterDelay: 0.2)
+        animator3.startAnimation(afterDelay: 0.2)
     }
 }
