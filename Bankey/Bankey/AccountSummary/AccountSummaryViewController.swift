@@ -11,7 +11,7 @@ class AccountSummaryViewController: UIViewController {
     
     //Request models
     var profile: Profile?
-    var accounts: [Account] = []
+    var accounts: [AccountSummaryCell.ViewModel] = []
     
 //    let games = [
 //        "Pacman",
