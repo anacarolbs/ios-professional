@@ -25,11 +25,11 @@ struct PasswordCriteria {
     }
     
     static func lowercaseMet(_ text: String) -> Bool {
-        text.range(of: "ANY LOWERCASE REGEX", options: .regularExpression) != nil
+        text.range(of: "[a-z]+", options: .regularExpression) != nil
     }
 
     static func digitMet(_ text: String) -> Bool {
-        text.range(of: "ANY DIGIT REGEX", options: .regularExpression) != nil
+        text.range(of: "[0-9]+", options: .regularExpression) != nil
     }
     
     static func specialCharacterMet(_ text: String) -> Bool {

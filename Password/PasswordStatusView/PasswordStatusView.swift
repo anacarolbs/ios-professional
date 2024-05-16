@@ -117,6 +117,8 @@ extension PasswordStatusView {
         let digitMet = PasswordCriteria.digitMet(text)
         let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
         
+        print("Lowercase \(text ) lowercaseMet \(lowercaseMet)")
+        
         // escrever isso aqui é a mesma coisa que escrever o que está comentado abaixo
         if shouldResetCriteria {
             // Inline validation (✅ or ⚪️)
